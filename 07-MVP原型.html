@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>高校科研实验室管理系统 · MVP 原型</title>
+<style>
+  :root{
+    --primary:#1a5fb4; --primary-light:#e6f1fb;
+    --teal:#0f6e56; --teal-light:#e1f5ee;
+    --amber:#854f0b; --amber-light:#faeeda;
+    --red:#a32d2d; --red-light:#fcebeb;
+    --text:#1f2328; --muted:#666; --border:#e0e0e0; --bg:#f5f7fa;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:var(--bg);color:var(--text);font-size:14px;line-height:1.6}
+  .topbar{background:var(--primary);color:#fff;padding:14px 24px;display:flex;align-items:center;justify-content:space-between}
+  .topbar h1{font-size:18px;font-weight:600}
+  .topbar .badge{font-size:12px;background:rgba(255,255,255,.2);padding:4px 10px;border-radius:12px}
+  .wrap{max-width:1100px;margin:20px auto;padding:0 20px}
+  .tabs{display:flex;gap:8px;margin-bottom:20px}
+  .tab{padding:10px 20px;border-radius:8px;cursor:pointer;background:#fff;border:1px solid var(--border);font-weight:500;color:var(--muted)}
+  .tab.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+  .panel{display:none}
+  .panel.active{display:block}
+  .card{background:#fff;border-radius:12px;padding:20px;margin-bottom:16px;border:1px solid var(--border)}
+  .card h2{font-size:16px;margin-bottom:12px;color:var(--primary)}
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:16px}
+  .inst-item{border:1px solid var(--border);border-radius:10px;padding:16px;background:#fff}
+  .inst-item .name{font-weight:600;font-size:15px}
+  .inst-item .meta{color:var(--muted);font-size:13px;margin:4px 0}
+  .status{display:inline-block;padding:2px 8px;border-radius:4px;font-size:12px}
+  .status.free{background:var(--teal-light);color:var(--teal)}
+  .status.busy{background:var(--red-light);color:var(--red)}
+  button{background:var(--primary);color:#fff;border:none;padding:8px 16px;border-radius:6px;cursor:pointer;font-size:13px}
+  button:hover{opacity:.9}
+  button.ghost{background:#fff;color:var(--primary);border:1px solid var(--primary)}
+  button.danger{background:var(--red)}
+  table{width:100%;border-collapse:collapse;margin-top:12px}
+  th,td{padding:10px;border-bottom:1px solid var(--border);text-align:left;font-size:13px}
+  th{background:var(--bg);font-weight:600}
+  .form-row{margin-bottom:12px}
+  .form-row label{display:block;margin-bottom:4px;font-weight:500;color:var(--muted)}
+  input,select,textarea{width:100%;padding:8px 10px;border:1px solid var(--border);border-radius:6px;font-size:13px;font-family:inherit}
+  textarea{min-height:80px;resize:vertical}
+  .toast{position:fixed;top:20px;right:20px;background:var(--teal);color:#fff;padding:12px 20px;border-radius:8px;display:none;z-index:999}
+  .toast.err{background:var(--red)}
+  .toast.show{display:block}
+  .empty{color:var(--muted);text-align:center;padding:30px}
+  .tag{display:inline-block;font-size:11px;padding:1px 6px;border-radius:4px;margin-right:4px}
+  .tag.pending{background:var(--amber-light);color:var(--amber)}
+  .tag.approved{background:var(--teal-light);color:var(--teal)}
+</style>
+</head>
+<body>
+<div class="topbar">
+  <h1>高校科研实验室管理系统</h1>
+  <span class="badge">MVP 原型 · 仪器预约 + 实验记录</span>
+</div>
+
+<div class="wrap">
+  <div class="tabs">
+    <div class="tab active" data-tab="booking">仪器预约</div>
+    <div class="tab" data-tab="experiment">实验记录</div>
+  </div>
+
+  <!-- 仪器预约 -->
+  <div class="panel active" id="panel-booking">
+    <div class="card">
+      <h2>可用仪器</h2>
+      <div class="grid" id="inst-list"></div>
+    </div>
+    <div class="card">
+      <h2>预约申请</h2>
+      <div class="form-row"><label>选择仪器</label><select id="book-inst"></select></div>
+      <div class="form-row"><label>开始时间</label><input type="datetime-local" id="book-start"></div>
+      <div class="form-row"><label>结束时间</label><input type="datetime-local" id="book-end"></div>
+      <button onclick="submitBooking()">提交预约（自动冲突校验）</button>
+    </div>
+    <div class="card">
+      <h2>我的预约</h2>
+      <div id="booking-list"></div>
+    </div>
+  </div>
+
+  <!-- 实验记录 -->
+  <div class="panel" id="panel-experiment">
+    <div class="card">
+      <h2>新增实验记录</h2>
+      <div class="form-row"><label>所属课题 / 项目</label><input id="exp-project" placeholder="如：石墨烯制备工艺研究"></div>
+      <div class="form-row"><label>实验标题</label><input id="exp-title" placeholder="如：第 3 批次样品表征"></div>
+      <div class="form-row"><label>实验内容</label><textarea id="exp-content" placeholder="记录实验过程、参数、结果..."></textarea></div>
+      <button onclick="submitExperiment()">保存归档</button>
+    </div>
+    <div class="card">
+      <h2>已归档记录</h2>
+      <div id="exp-list"></div>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ===== 数据存储（localStorage 模拟后端） =====
+const DB_KEY_BOOK = 'lms_bookings';
+const DB_KEY_EXP = 'lms_experiments';
+
+// 仪器初始数据
+const INSTRUMENTS = [
+  {id:1, name:'透射电子显微镜 TEM', loc:'材料楼 301', status:'free'},
+  {id:2, name:'X 射线衍射仪 XRD', loc:'材料楼 305', status:'free'},
+  {id:3, name:'核磁共振谱仪 NMR', loc:'化学楼 202', status:'free'},
+  {id:4, name:'液相色谱-质谱联用 LC-MS', loc:'化学楼 210', status:'free'},
+];
+
+function loadBookings(){ return JSON.parse(localStorage.getItem(DB_KEY_BOOK)||'[]'); }
+function saveBookings(b){ localStorage.setItem(DB_KEY_BOOK, JSON.stringify(b)); }
+function loadExperiments(){ return JSON.parse(localStorage.getItem(DB_KEY_EXP)||'[]'); }
+function saveExperiments(e){ localStorage.setItem(DB_KEY_EXP, JSON.stringify(e)); }
+
+function toast(msg, err){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show' + (err ? ' err' : '');
+  setTimeout(()=>t.className='toast', 2500);
+}
+
+// ===== Tab 切换 =====
+document.querySelectorAll('.tab').forEach(tab=>{
+  tab.addEventListener('click', ()=>{
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+    document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+    tab.classList.add('active');
+    document.getElementById('panel-'+tab.dataset.tab).classList.add('active');
+  });
+});
+
+// ===== 仪器列表 =====
+function renderInstruments(){
+  const list = document.getElementById('inst-list');
+  const sel = document.getElementById('book-inst');
+  const bookings = loadBookings();
+  const now = Date.now();
+  let html = '', opts = '';
+  INSTRUMENTS.forEach(inst=>{
+    // 判断当前是否有进行中的预约
+    const busy = bookings.some(b=>b.instId===inst.id && b.status==='approved' && new Date(b.start).getTime()<=now && new Date(b.end).getTime()>=now);
+    const st = busy ? 'busy' : 'free';
+    html += `<div class="inst-item">
+      <div class="name">${inst.name}</div>
+      <div class="meta">位置：${inst.loc}</div>
+      <span class="status ${st}">${busy?'使用中':'空闲'}</span>
+    </div>`;
+    opts += `<option value="${inst.id}">${inst.name}（${inst.loc}）</option>`;
+  });
+  list.innerHTML = html;
+  sel.innerHTML = opts;
+}
+
+// ===== 预约提交（核心：冲突校验） =====
+function submitBooking(){
+  const instId = parseInt(document.getElementById('book-inst').value);
+  const start = document.getElementById('book-start').value;
+  const end = document.getElementById('book-end').value;
+  if(!start || !end){ toast('请选择起止时间', true); return; }
+  const s = new Date(start).getTime(), e = new Date(end).getTime();
+  if(e <= s){ toast('结束时间需晚于开始时间', true); return; }
+
+  const bookings = loadBookings();
+  // 冲突校验：同一仪器，时间区间有重叠
+  const conflict = bookings.some(b=> b.instId===instId && b.status!=='rejected' && s < new Date(b.end).getTime() && e > new Date(b.start).getTime());
+  if(conflict){ toast('⚠ 该时段已被预约，存在冲突', true); return; }
+
+  bookings.push({id:Date.now(), instId, start, end, status:'approved', createdAt:new Date().toLocaleString()});
+  saveBookings(bookings);
+  renderInstruments(); renderBookings();
+  toast('预约成功 ✓ 已自动避冲突');
+}
+
+// ===== 预约列表 =====
+function renderBookings(){
+  const list = document.getElementById('booking-list');
+  const bookings = loadBookings();
+  if(bookings.length===0){ list.innerHTML='<div class="empty">暂无预约记录</div>'; return; }
+  const names = {}; INSTRUMENTS.forEach(i=>names[i.id]=i.name);
+  let html = '<table><tr><th>仪器</th><th>开始</th><th>结束</th><th>状态</th><th>操作</th></tr>';
+  bookings.slice().reverse().forEach(b=>{
+    html += `<tr>
+      <td>${names[b.instId]||b.instId}</td>
+      <td>${b.start.replace('T',' ')}</td>
+      <td>${b.end.replace('T',' ')}</td>
+      <td><span class="tag ${b.status==='approved'?'approved':'pending'}">${b.status==='approved'?'已批准':'待审批'}</span></td>
+      <td><button class="danger" onclick="cancelBooking(${b.id})">取消</button></td>
+    </tr>`;
+  });
+  html += '</table>';
+  list.innerHTML = html;
+}
+
+function cancelBooking(id){
+  let bookings = loadBookings();
+  bookings = bookings.filter(b=>b.id!==id);
+  saveBookings(bookings);
+  renderInstruments(); renderBookings();
+  toast('已取消预约');
+}
+
+// ===== 实验记录 =====
+function submitExperiment(){
+  const project = document.getElementById('exp-project').value.trim();
+  const title = document.getElementById('exp-title').value.trim();
+  const content = document.getElementById('exp-content').value.trim();
+  if(!project || !title){ toast('请填写课题与标题', true); return; }
+  const exps = loadExperiments();
+  exps.push({id:Date.now(), project, title, content, createdAt:new Date().toLocaleString()});
+  saveExperiments(exps);
+  document.getElementById('exp-project').value='';
+  document.getElementById('exp-title').value='';
+  document.getElementById('exp-content').value='';
+  renderExperiments();
+  toast('实验记录已归档 ✓');
+}
+
+function renderExperiments(){
+  const list = document.getElementById('exp-list');
+  const exps = loadExperiments();
+  if(exps.length===0){ list.innerHTML='<div class="empty">暂无归档记录（数据云端留痕，人员流动不丢失）</div>'; return; }
+  let html = '';
+  exps.slice().reverse().forEach(e=>{
+    html += `<div class="inst-item" style="margin-bottom:10px">
+      <div class="name">${e.title}</div>
+      <div class="meta">${e.project} ｜ ${e.createdAt}</div>
+      <div style="margin-top:6px;color:#444;white-space:pre-wrap">${e.content}</div>
+    </div>`;
+  });
+  list.innerHTML = html;
+}
+
+// 初始化
+renderInstruments();
+renderBookings();
+renderExperiments();
+</script>
+</body>
+</html>
