@@ -1,0 +1,42 @@
+<svg viewBox="0 0 680 560" width="100%" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>实验室数智化转型后管理流程</title>
+<desc>展示实验室管理系统上线后的线上预约、数据沉淀、安全追溯、数据看板的闭环流程</desc>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+<text x="340" y="30" text-anchor="middle" font-size="15" font-weight="500" fill="#0C447C">数智化转型后 · 一体化平台闭环（线上化 / 可追溯 / 数据驱动）</text>
+<g><rect x="40" y="52" width="200" height="56" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="140" y="72" text-anchor="middle" font-size="14" font-weight="500" fill="#0C447C" dominant-baseline="central">师生线上发起</text>
+<text x="140" y="90" text-anchor="middle" font-size="12" fill="#185FA5" dominant-baseline="central">PC / 小程序预约仪器、查空闲</text></g>
+<line x1="140" y1="108" x2="140" y2="136" stroke="#185FA5" stroke-width="1.5" marker-end="url(#arrow)"/>
+<g><rect x="40" y="136" width="200" height="56" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="140" y="156" text-anchor="middle" font-size="14" font-weight="500" fill="#0C447C" dominant-baseline="central">系统冲突校验 + 审批</text>
+<text x="140" y="174" text-anchor="middle" font-size="12" fill="#185FA5" dominant-baseline="central">自动避冲突，线上审批</text></g>
+<line x1="240" y1="164" x2="320" y2="164" stroke="#185FA5" stroke-width="1.5" marker-end="url(#arrow)"/>
+<g><rect x="320" y="136" width="280" height="56" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="460" y="156" text-anchor="middle" font-size="14" font-weight="500" fill="#085041" dominant-baseline="central">刷卡 / 扫码上机</text>
+<text x="460" y="174" text-anchor="middle" font-size="12" fill="#0F6E56" dominant-baseline="central">自动记录时长、使用人次</text></g>
+<line x1="460" y1="192" x2="460" y2="220" stroke="#0F6E56" stroke-width="1.5" marker-end="url(#arrow)"/>
+<g><rect x="320" y="220" width="280" height="56" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="460" y="240" text-anchor="middle" font-size="14" font-weight="500" fill="#085041" dominant-baseline="central">实验数据在线归档</text>
+<text x="460" y="258" text-anchor="middle" font-size="12" fill="#0F6E56" dominant-baseline="central">按课题组建档，云端留痕可追溯</text></g>
+<line x1="320" y1="248" x2="220" y2="248" stroke="#185FA5" stroke-width="1.5"/>
+<g><rect x="40" y="220" width="180" height="56" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="130" y="240" text-anchor="middle" font-size="14" font-weight="500" fill="#0C447C" dominant-baseline="central">危化品 / 耗材管控</text>
+<text x="130" y="258" text-anchor="middle" font-size="12" fill="#185FA5" dominant-baseline="central">全流程追溯 + 库存预警</text></g>
+<line x1="460" y1="276" x2="460" y2="304" stroke="#0F6E56" stroke-width="1.5" marker-end="url(#arrow)"/>
+<g><rect x="320" y="304" width="280" height="56" rx="8" fill="#E1F5EE" stroke="#0F6E56" stroke-width="0.5"/>
+<text x="460" y="324" text-anchor="middle" font-size="14" font-weight="500" fill="#085041" dominant-baseline="central">维保校准自动提醒</text>
+<text x="460" y="342" text-anchor="middle" font-size="12" fill="#0F6E56" dominant-baseline="central">到期推送，设备状态实时可见</text></g>
+<line x1="460" y1="360" x2="460" y2="388" stroke="#0C447C" stroke-width="1.5" marker-end="url(#arrow)"/>
+<g><rect x="320" y="388" width="280" height="56" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="460" y="408" text-anchor="middle" font-size="14" font-weight="500" fill="#0C447C" dominant-baseline="central">数据看板 · 科学决策</text>
+<text x="460" y="426" text-anchor="middle" font-size="12" fill="#185FA5" dominant-baseline="central">利用率 / 故障 / 成本 / 工作量分析</text></g>
+<line x1="320" y1="416" x2="220" y2="416" stroke="#185FA5" stroke-width="1.5"/>
+<g><rect x="40" y="388" width="180" height="56" rx="8" fill="#E6F1FB" stroke="#185FA5" stroke-width="0.5"/>
+<text x="130" y="408" text-anchor="middle" font-size="14" font-weight="500" fill="#0C447C" dominant-baseline="central">安全准入 + 隐患闭环</text>
+<text x="130" y="426" text-anchor="middle" font-size="12" fill="#185FA5" dominant-baseline="central">线上培训考核，隐患整改可闭环</text></g>
+<text x="460" y="480" text-anchor="middle" font-size="13" font-weight="500" fill="#0C447C">四大价值：资源盘活 · 数据沉淀 · 安全可控 · 决策有据</text>
+</svg>
