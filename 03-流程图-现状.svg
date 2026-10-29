@@ -1,0 +1,42 @@
+<svg viewBox="0 0 680 560" width="100%" role="img" xmlns="http://www.w3.org/2000/svg">
+<title>实验室现状传统人工管理流程</title>
+<desc>展示当前高校科研实验室采用纸质台账、线下登记、人工调度导致的低效与断点流程</desc>
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+<path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+</marker>
+</defs>
+<text x="340" y="30" text-anchor="middle" font-size="15" font-weight="500" fill="#A32D2D">现状 · 传统人工管理模式（低效 / 断点 / 无追溯）</text>
+<g><rect x="40" y="52" width="200" height="56" rx="8" fill="#FCEBEB" stroke="#A32D2D" stroke-width="0.5"/>
+<text x="140" y="72" text-anchor="middle" font-size="14" font-weight="500" fill="#791F1F" dominant-baseline="central">师生提出实验需求</text>
+<text x="140" y="90" text-anchor="middle" font-size="12" fill="#A32D2D" dominant-baseline="central">口头 / 微信 / 电话找管理员</text></g>
+<line x1="140" y1="108" x2="140" y2="136" stroke="#A32D2D" stroke-width="1.5" marker-end="url(#arrow)"/>
+<g><rect x="40" y="136" width="200" height="56" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+<text x="140" y="156" text-anchor="middle" font-size="14" font-weight="500" fill="#633806" dominant-baseline="central">人工登记 / 纸质台账</text>
+<text x="140" y="174" text-anchor="middle" font-size="12" fill="#854F0B" dominant-baseline="central">登记本记录，靠记忆协调</text></g>
+<line x1="240" y1="164" x2="320" y2="164" stroke="#854F0B" stroke-width="1.5" marker-end="url(#arrow)"/>
+<g><rect x="320" y="136" width="280" height="56" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+<text x="460" y="156" text-anchor="middle" font-size="14" font-weight="500" fill="#633806" dominant-baseline="central">人工排期 / 口头确认冲突</text>
+<text x="460" y="174" text-anchor="middle" font-size="12" fill="#854F0B" dominant-baseline="central">时间冲突靠先后，易冲突易闲置</text></g>
+<line x1="460" y1="192" x2="460" y2="220" stroke="#A32D2D" stroke-width="1.5" marker-end="url(#arrow)"/>
+<g><rect x="320" y="220" width="280" height="56" rx="8" fill="#FCEBEB" stroke="#A32D2D" stroke-width="0.5"/>
+<text x="460" y="240" text-anchor="middle" font-size="14" font-weight="500" fill="#791F1F" dominant-baseline="central">线下使用 · 纸质实验记录</text>
+<text x="460" y="258" text-anchor="middle" font-size="12" fill="#A32D2D" dominant-baseline="central">记录本 + 私人电脑，无统一归档</text></g>
+<line x1="320" y1="248" x2="220" y2="248" stroke="#A32D2D" stroke-width="1.5"/>
+<g><rect x="40" y="220" width="180" height="56" rx="8" fill="#F1EFE8" stroke="#5F5E5A" stroke-width="0.5"/>
+<text x="130" y="240" text-anchor="middle" font-size="14" font-weight="500" fill="#2C2C2A" dominant-baseline="central">耗材 / 危化品</text>
+<text x="130" y="258" text-anchor="middle" font-size="12" fill="#5F5E5A" dominant-baseline="central">纸质领用，无库存预警</text></g>
+<line x1="460" y1="276" x2="460" y2="304" stroke="#A32D2D" stroke-width="1.5" marker-end="url(#arrow)"/>
+<g><rect x="320" y="304" width="280" height="56" rx="8" fill="#FCEBEB" stroke="#A32D2D" stroke-width="0.5"/>
+<text x="460" y="324" text-anchor="middle" font-size="14" font-weight="500" fill="#791F1F" dominant-baseline="central">数据分散 · 事后难追溯</text>
+<text x="460" y="342" text-anchor="middle" font-size="12" fill="#A32D2D" dominant-baseline="central">人员流动导致数据流失</text></g>
+<line x1="460" y1="360" x2="460" y2="388" stroke="#A32D2D" stroke-width="1.5" marker-end="url(#arrow)"/>
+<g><rect x="320" y="388" width="280" height="56" rx="8" fill="#FCEBEB" stroke="#A32D2D" stroke-width="0.5"/>
+<text x="460" y="408" text-anchor="middle" font-size="14" font-weight="500" fill="#791F1F" dominant-baseline="central">经验决策 · 突击检查</text>
+<text x="460" y="426" text-anchor="middle" font-size="12" fill="#A32D2D" dominant-baseline="central">无数据看板，管理靠经验</text></g>
+<line x1="320" y1="416" x2="220" y2="416" stroke="#854F0B" stroke-width="1.5"/>
+<g><rect x="40" y="388" width="180" height="56" rx="8" fill="#FAEEDA" stroke="#854F0B" stroke-width="0.5"/>
+<text x="130" y="408" text-anchor="middle" font-size="14" font-weight="500" fill="#633806" dominant-baseline="central">安全准入</text>
+<text x="130" y="426" text-anchor="middle" font-size="12" fill="#854F0B" dominant-baseline="central">线下培训，准入靠人工把关</text></g>
+<text x="460" y="480" text-anchor="middle" font-size="13" font-weight="500" fill="#791F1F">四大痛点：资源浪费 · 数据流失 · 安全隐患 · 决策粗放</text>
+</svg>
